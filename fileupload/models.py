@@ -10,6 +10,8 @@ class PublicDocument(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
 
-class PrivateDocument(PublicDocument):
+class PrivateDocument(models.Model):
+    description = models.CharField(max_length=255, blank=True)
     document = models.FileField(storage=PrivateMediaStorage())
-    user = models.ForeignKey(User, related_name='documents')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, related_name='documents', on_delete=models.DO_NOTHING)

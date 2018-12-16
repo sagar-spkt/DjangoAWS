@@ -2,9 +2,9 @@
 
 # https://medium.com/techkylabs/django-deployment-on-linux-ubuntu-16-04-with-postgresql-nginx-ssl-e6504a02f224
 
-sudo apt-get update && apt-get upgrade -y
-sudo apt-get install python3-dev python3-dev python3-virtualenv libpq-dev \
-    postgresql postgresql-contrib nginx git
+sudo apt-get update -y
+sudo apt-get install python3-dev python3-pip libpq-dev postgresql postgresql-contrib nginx git -y
+pip3 install virtualenv awscli
 # Don't worry about database credentials. This will be changed
 # this is bad
 sudo su - postgres
@@ -18,11 +18,11 @@ logout
 git clone https://github.com/sagar-spkt/DjangoAWS.git
 cd DjangoAWS
 aws s3 cp s3://djangoaws/.env ./.env
-virtualvenv venv
+virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
 python manage.py migrate
-python manage.py collectstatic
+python manage.py collectstatic --noinput
 echo "from django.contrib.auth.models import User; User.objects.create_superuser('sagar', 'sagar@example.com', 'sagar12345')" | python manage.py shell
 deactivate
 sudo mkdir -p /etc/systemd/system/ && cp gunicorn.service /etc/systemd/system/
