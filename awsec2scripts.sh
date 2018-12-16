@@ -17,6 +17,7 @@ psql -c "GRANT ALL ON DATABASE djangoaws to djangoawsuser;"
 logout
 git clone https://github.com/sagar-spkt/DjangoAWS.git
 cd DjangoAWS
+aws s3 cp s3://djangoaws/.env ./.env
 virtualvenv venv
 source venv/bin/activate
 pip install -r requirements.txt
