@@ -15,7 +15,7 @@ psql -c "ALTER ROLE djangoawsuser SET TIMEZONE TO 'UTC';"
 psql -c "CREATE DATABASE djangoaws WITH OWNER=djangoawsuser;"
 psql -c "GRANT ALL ON DATABASE djangoaws to djangoawsuser;"
 logout
-# TODO git clone url
+git clone https://github.com/sagar-spkt/DjangoAWS.git
 cd DjangoAWS
 virtualvenv venv
 source venv/bin/activate
