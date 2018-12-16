@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <header>
+        <h1>S3 Static </h1>
+    </header>
+    <main>
+        <img src="{% static 'fileupload/img/teststatic.png' %}">
+    </main>
+{% endblock %}
